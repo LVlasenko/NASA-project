@@ -7,7 +7,7 @@
       your have an opportunity to be a part of NASA expedition to MARS. Just choose 
       your options - Rover, Camera and Mars Day and start your journey.</p>
     
-    <form>
+    <form @submit.prevent="submitForm">
 
       <select 
           name="rover" 
@@ -60,10 +60,23 @@ export default {
         {text: 'Front', value: 'front'},
         {text: 'Rear', value: 'rear'},
       ],
+      
     }
   },
   methods: {
-
+    submitForm() {
+      let selectedData = {
+        selectedRover: this.selectedRover,
+        selectedCamera: this.selectedCamera,
+        selectedDay: this.selectedDay,
+      };
+      console.log("submit");
+      this.$emit('selectedOptions', selectedData);
+      console.log(selectedData, "selected Data");
+      this.selectedRover = '';
+      this.selectedCamera = '';
+      this.selectedDay = Number;
+    }
   }
 }
 </script>
