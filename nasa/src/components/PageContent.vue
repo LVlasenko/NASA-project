@@ -2,21 +2,21 @@
   <div>
     <Header msg="Nasa expeditions to MARS"/>
     <SelectSection />
-    <PhotoSection />
+    <PhotosContent />
   </div>
 </template>
 
 <script>
 import Header from './Header.vue'
 import SelectSection from './SelectSection.vue'
-import PhotoSection from './PhotoSection.vue'
+import PhotosContent from './PhotosContent.vue'
 
 export default {
   name: 'PageContent',
   components: {
     Header,
     SelectSection,
-    PhotoSection
+    PhotosContent
   }
 }
 </script>

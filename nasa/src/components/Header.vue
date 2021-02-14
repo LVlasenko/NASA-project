@@ -23,7 +23,7 @@ export default {
       height: 100px;
       width: 100%;
       line-height: 100px;
-      background: linear-gradient(to right, rgb(0, 0, 50), rgb(0, 0, 100));
+      background: linear-gradient(to right, rgb(20, 12, 6), rgb(218, 165, 85));
     }
 
     .header-text {

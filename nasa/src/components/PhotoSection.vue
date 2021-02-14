@@ -1,6 +1,10 @@
 <template>
 <section class="photo-section">
-  <PhotoItem />
+  <PhotoItem 
+      v-for="item in items"
+      :itemProps="item"
+      :key="item.id"
+  />
 </section>
 </template>
 
@@ -10,7 +14,7 @@ export default {
   name: 'PhotoSection',
   data() {
     return {
-      items: []
+      items: [],
     }
   },
   components: {
@@ -21,8 +25,13 @@ export default {
   },
   async created() {
     console.log('created');
-  }
-
+    try {
+      const items = await (await fetch("https://api.nasa.gov/planetary/apod?api_key=KAbsfyUAS6Lx5NgC0rnVMeQv1xKuCldwFQtjTRr1"));
+      this.items = items;
+    } catch(e) {
+      console.log(e, 'oops');
+    }
+  } 
   
 }
 </script>

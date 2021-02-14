@@ -7,15 +7,15 @@
       your have an opportunity to be a part of NASA expedition to MARS. Just choose 
       your options - Rover, Camera and Mars Day and start your journey.</p>
     
-    <form @submit.prevent="submitForm">
+    <form >
 
       <select 
           name="rover" 
           class="rover" 
-          v-model="selectedRover">
+          v-model="selectedData.selectedRover">
          <option v-for="option in optionsRover" 
                  v-bind:value="option.value" 
-                 v-bind:key="option[index]">
+                 v-bind:key="option.id">
                 {{ option.text }}
          </option>
       </select>
@@ -23,10 +23,10 @@
       <select 
           name="camera" 
           class="camera" 
-          v-model="selectedCamera">
+          v-model="selectedData.selectedCamera">
          <option v-for="option in optionsCamera" 
                  v-bind:value="option.value" 
-                 v-bind:key="option[index]">
+                 v-bind:key="option.id">
                 {{ option.text }}
          </option>
        </select>
@@ -36,19 +36,20 @@
         name="marsDay" 
         placeholder="Mars day" 
         id="days"
-        v-model="selectedDay">
+        v-model="selectedData.sol">
+
+        <button @click.prevent="submitForm">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
+import {event} from "@/main";
+
 export default {
   name: 'SelectSection',
   data() {
     return {
-      selectedRover: '',
-      selectedCamera: '',
-      selectedDay: Number,
       optionsRover: [
         {text: 'Rover', value:''},
         {text: 'Curiosity', value: 'curiosity'},
@@ -57,28 +58,24 @@ export default {
       ],
       optionsCamera: [
         {text: 'Camera', value:''},
-        {text: 'Front', value: 'front'},
-        {text: 'Rear', value: 'rear'},
+        {text: 'Front', value: 'fhaz'},
+        {text: 'Rear', value: 'rhaz'},
       ],
-      
+      selectedData: {
+        selectedRover: '',
+        selectedCamera: '',
+        sol: '',
+      }   
     }
   },
   methods: {
     submitForm() {
-      let selectedData = {
-        selectedRover: this.selectedRover,
-        selectedCamera: this.selectedCamera,
-        selectedDay: this.selectedDay,
-      };
       console.log("submit");
-      this.$emit('selectedOptions', selectedData);
-      console.log(selectedData, "selected Data");
-      this.selectedRover = '';
-      this.selectedCamera = '';
-      this.selectedDay = Number;
+      event.$emit('submitForm', this.selectedData);
+      console.log(this.selectedData, "selected Data");
     }
   }
-}
+}  
 </script>
 
 <style scoped lang="scss">
@@ -86,7 +83,7 @@ export default {
     margin-top: 103px;
     //min-height: calc(100vh - 100px);
     height: 650px;
-    background: url('../assets/space2.png');
+    background: url('https://mars.nasa.gov/system/feature_items/images/6295_Helicopter_landing_composite.jpg');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
