@@ -38,7 +38,8 @@
         id="days"
         v-model="selectedData.sol">
 
-        <button @click.prevent="submitForm">Submit</button>
+        <button class="submitBtn" 
+                @click.prevent="submitForm">Submit</button>
     </form>
   </div>
 </template>
@@ -71,7 +72,7 @@ export default {
   methods: {
     submitForm() {
       console.log("submit");
-      event.$emit('submitForm', this.selectedData);
+      event.$emit('dataSubmit', this.selectedData);
       console.log(this.selectedData, "selected Data");
     }
   }
@@ -91,21 +92,28 @@ export default {
 }
 
 p {
-  width: 700px;
+  width: 650px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: italic;
   font-weight: 100;
   letter-spacing: 0.5px;
-  margin: 20px;
-  position: absolute;
+  padding-top: 20px;
+  padding-left: 20px;
+  line-height: 20px;
 }
 
-select {
-    position: absolute;
-    top: 175px;
-    width: 200px;
+form {
+  width: 300px;
+  height: 350px;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+select, #days {
+    width: 250px;
+    height: 25px;
     margin-top: 20px;
     color: grey;
     font-size: 14px;
@@ -113,34 +121,23 @@ select {
     font-style: italic;
     font-weight: 100;
     outline: none;
-    background: rgb(224, 235, 248);
-    border: rgb(224, 235, 248);
+    background: white;
+    border: white;
     border-radius: 1px;
-    &.rover {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    &.camera {
-      left: 150px;
-    }
 }
 
-#days {
-  position: absolute;
-  top: 175px;
-  width: 200px;
+.submitBtn {
   margin-top: 20px;
-  right: 150px;
-  outline: none;
-  background: rgb(224, 235, 248);
-  border: rgb(224, 235, 248);
-  border-radius: 1px;
+  width: 250px;
+  border: none;
+  height: 25px;
+  &:hover {
+    background: rgb(201, 228, 220);
+  }
+  &:active {
+    outline: none;
+  }
 
-  font-style: italic;
-  font-weight: 100;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-    
 }
 
 </style>

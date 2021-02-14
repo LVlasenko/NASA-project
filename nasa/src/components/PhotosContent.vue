@@ -1,29 +1,14 @@
 <template>
   <div  class="container">
-
-    <h2 v-show="items.length<1" style="text-align: center">Please, select your options to show photos</h2>
     <div v-for="item in items" :key="item.id">
       <div v-for="photos in item" :key="photos.id">
-        <div v-for="(photo, index) in photos" :key="photo.id" class="container">
-
-
-            <div class="item" v-if="index < photoToShow">
-              <img
-                     :src="photo.img_src"
-                     :alt="photo.camera.full_name"
-                     loading="lazy"
-              >
-
-            </div>
-
-          </div>
-
-
-
+        <div v-for="(photo, index) in photos" :key="photo.id" class="photoItem">
+              <img :src="photo.img_src"
+                   v-if="index < photosNumber ">
+        </div>
       </div>
-
     </div>
-    <button  v-show="items.length" class="btn-load" @click="photoToShow+=2">Show More</button>
+    <button  v-show="items.length" class="btn-load" @click="photosNumber+=2">Show More</button>
   </div>
 </template>
 
@@ -34,7 +19,8 @@ const axios = require("axios");
 export default {
   name: "PhotosContent",
   beforeCreate() {
-    event.$on('submitForm', (value) => {
+    console.log(event, 'event')
+    event.$on('dataSubmit', (value) => {
       let {selectedRover, selectedCamera, sol} = value
       this.getPhotos(selectedRover, selectedCamera, sol)
     })
@@ -44,7 +30,7 @@ export default {
       items: [],
       url: "https://api.nasa.gov/mars-photos/api/v1/rovers/",
       api_key: "KAbsfyUAS6Lx5NgC0rnVMeQv1xKuCldwFQtjTRr1",
-      photoToShow:2
+      photosNumber: 2
     };
   },
   methods: {
@@ -57,10 +43,9 @@ export default {
             url: `${this.url}${rover}/photos?sol=${sol}&camera=${camera}&api_key=${this.api_key}`,
           });
           this.items=[];
-          this.photoToShow=2;
+          this.photosNumber=2;
           this.items.push(photos);
           console.log(photos, 'photos');
-          this.$forceUpdate();
         }catch (e) {
           console.log(e)
         }
