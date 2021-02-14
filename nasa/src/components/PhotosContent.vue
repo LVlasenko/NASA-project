@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <button  v-show="items.length" class="btn-load" @click="photosNumber+=2">Show More</button>
+    <button  v-show="items.length" class="btn-load" @click="addPhoto">Show More</button>
   </div>
 </template>
 
@@ -43,36 +43,46 @@ export default {
             url: `${this.url}${rover}/photos?sol=${sol}&camera=${camera}&api_key=${this.api_key}`,
           });
           this.items=[];
-          this.photosNumber=2;
           this.items.push(photos);
           console.log(photos, 'photos');
+          this.$forceUpdate();
         }catch (e) {
           console.log(e)
         }
       }
+    },
+    addPhoto() {
+      console.log('click');
+      this.photosNumber+=2;
+      console.log(this.photosNumber);
     }
   }
 }
 </script>
 
 <style >
-.btn-load{
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  margin: 10px 0;
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
 }
-.item {
-  margin: 0 auto;
-  float: left;
-  min-width: 0;
-  margin: 2rem;
+
+.btn-load{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0;
+}
+.photoItem {
+  width: 50%;
   transition: 0.8s ease;
   box-shadow: 5px 5px 10px 2px #cccccc;
 }
-.item img {
+.photoItem img {
   width: 100%;
-  max-width: 100%;
-  height: auto;
 }
 </style>
