@@ -2,7 +2,7 @@
   <div  class="container">
     <div v-for="item in items" :key="item.id">
       <div v-for="photos in item" :key="photos.id">
-        <div v-for="(photo, index) in photos" :key="photo.id" class="photoItem">
+        <div v-for="(photo, index) in photos" :key="photo.id" class="item">
               <img :src="photo.img_src"
                    v-if="index < photosNumber ">
         </div>
@@ -62,27 +62,42 @@ export default {
 
 <style >
 .container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  background-color: beige;
-  display: flex;
-  flex-direction: column;
+    padding: 5px;
+    max-width: 960px;
+    width: 100%;
+    margin: 5px auto;
+    background: rgb(197, 165, 137);
 }
 
 .btn-load{
-  position: absolute;
+  position: relative;
   left: 50%;
-  transform: translate(-50%);
-  bottom: 0;
+  transform: translate(-50%, 0);
+  margin: 10px 0;
 }
-.photoItem {
-  width: 50%;
+.item {
+  width: 450px;
   transition: 0.8s ease;
   box-shadow: 5px 5px 10px 2px #cccccc;
+  margin: 10px;
 }
-.photoItem img {
+
+.item:nth-child(odd) {
+  float: left;
+}
+.item:nth-child(even) {
+  float: right;
+}
+.item img {
   width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+.item:hover {
+  transform: scale(0.9);
 }
 </style>

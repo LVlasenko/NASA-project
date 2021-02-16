@@ -81,13 +81,14 @@ export default {
 
 <style scoped lang="scss">
 .section-wrapp {
-    margin-top: 103px;
-    //min-height: calc(100vh - 100px);
     height: 650px;
     background: url('https://mars.nasa.gov/system/feature_items/images/6295_Helicopter_landing_composite.jpg');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 103px;
     
 }
 

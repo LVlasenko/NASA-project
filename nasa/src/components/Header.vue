@@ -20,10 +20,14 @@ export default {
       display: flex;
       position: fixed;
       top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       height: 100px;
+      max-width: 960px;
       width: 100%;
       line-height: 100px;
       background: linear-gradient(to right, rgb(20, 12, 6), rgb(218, 165, 85));
+      z-index: 1;
     }
 
     .header-text {
