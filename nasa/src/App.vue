@@ -1,16 +1,22 @@
 <template>
   <div id="app">
+    <Header msg="Nasa expeditions to MARS"/>
     <PageContent />
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
 import PageContent from './components/PageContent.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    PageContent
+    Header,
+    PageContent,
+    Footer
   }
 }
 </script>

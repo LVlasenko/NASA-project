@@ -62,7 +62,6 @@ export default {
 
 <style >
 .container {
-    padding: 5px;
     max-width: 960px;
     width: 100%;
     margin: 5px auto;
@@ -80,6 +79,7 @@ export default {
   transition: 0.8s ease;
   box-shadow: 5px 5px 10px 2px #cccccc;
   margin: 10px;
+  
 }
 
 .item:nth-child(odd) {
