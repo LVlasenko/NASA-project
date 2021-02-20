@@ -43,6 +43,19 @@ export default {
     #icon {
       margin: auto;
       margin-left: 10px;
+      
+    }
+
+    @media(max-width: 400px) {
+      .header {
+        position: relative;
+        & > * {
+          display: block;
+        }
+        & .header-text {
+          font-size: 14px;
+        }
+      }
     }
 
 

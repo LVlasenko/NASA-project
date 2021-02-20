@@ -87,6 +87,7 @@ export default {
     background-position: center top;
     background-repeat: no-repeat;
     max-width: 960px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 103px;
     
@@ -132,13 +133,22 @@ select, #days {
   width: 250px;
   border: none;
   height: 25px;
+  outline: none;
   &:hover {
     background: rgb(201, 228, 220);
   }
-  &:active {
-    outline: none;
+
+}
+
+@media(max-width: 400px) {
+  p {
+    width: 305px;
+    text-align: justify;
   }
 
+  .section-wrapp {
+    margin-top: 3px;
+  }
 }
 
 </style>

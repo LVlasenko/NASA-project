@@ -94,10 +94,36 @@ export default {
   height: auto;
 }
 
-
-
-
 .item:hover {
   transform: scale(0.9);
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+  .item {
+  width: 350px;
+  height: 350px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    max-width: 400px;
+  }
+
+  .item {
+    margin: 10px auto;
+    width: 300px;
+    height: 300px;
+    padding-top: 10px;
+  }
+  .item:nth-child(even) {
+    float: none;
+  }
+  .item:nth-child(odd) {
+    float: none;
+  }
 }
 </style>
